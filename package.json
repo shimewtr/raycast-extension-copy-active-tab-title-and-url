@@ -1,7 +1,7 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "copyactivetabtitleandurl",
-  "title": "CopyActiveTabTitleAndUrl",
+  "name": "copy_active_tab_title_and_url",
+  "title": "Copy Active Tab Title And Url",
   "description": "",
   "icon": "command-icon.png",
   "author": "shimewtr",
@@ -11,9 +11,9 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "copyactivetabtitleandurl",
-      "title": "CopyActiveTabTitleAndUrl",
-      "description": "",
+      "name": "copy_active_tab_title_and_url",
+      "title": "Copy Active Tab Title And Url",
+      "description": "Copy Active Browser Tab Title And Url",
       "mode": "view"
     }
   ],

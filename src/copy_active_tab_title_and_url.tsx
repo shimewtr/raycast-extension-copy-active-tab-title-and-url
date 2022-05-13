@@ -1,23 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Action, ActionPanel, Icon, List } from "@raycast/api";
 import { runAppleScript } from "run-applescript";
 
 interface Link {
-  text: string
-  url: string
+  text: string | null
+  url: string | null
 }
 
 export default function Command() {
   const [link, setLink] = useState<Link>({
-    text: '',
-    url: '',
+    text: null,
+    url: null,
   })
   const [isLoading, setIsLoading] = useState(true)
 
   getFrontMostBrowserTitleAndUrl().then(titleAndUrl => {
     builldLink(titleAndUrl)
-    setIsLoading(false)
   })
+
+  useEffect(() => {
+    if(link.text){
+      setIsLoading(false)
+    }
+  }, [link]);
 
   async function getFrontMostBrowserTitleAndUrl(): Promise<string>{
     const titleAndUrl = await runAppleScript(`
@@ -60,7 +65,7 @@ export default function Command() {
         id={"inMarkdown"}
         key={"inMarkdown"}
         title={'Copy to clipboard in markdown format'}
-        subtitle={link.text}
+        subtitle={link.text || ''}
         icon={Icon.Clipboard}
         actions={
           <ActionPanel>
